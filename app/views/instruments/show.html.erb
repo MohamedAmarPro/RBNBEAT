@@ -6,3 +6,9 @@
 <p> <%= @instrument.category %></p>
 <p> <%= @instrument.age %></p>
 <p> <%= @instrument.price %></p>
+<%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Est-tu putain de sur ?!"} do %>
+<i class="fa-solid fa-trash-can "></i>
+<% end %>
+<%= link_to edit_instrument_path(@instrument) do %>
+<i class="fa-light fa-pencil"></i>
+<% end %>

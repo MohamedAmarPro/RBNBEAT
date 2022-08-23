@@ -1,5 +1,5 @@
 class InstrumentsController < ApplicationController
-  before_action :set_instrument, only: :show
+  before_action :set_instrument, only: [:show, :destroy, :edit]
 
   def index
     @instruments = Instrument.all
@@ -20,6 +20,16 @@ class InstrumentsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+
+
+  def destroy
+    @instrument.destroy
+  end
+
+  def edit
+  end
+
 
   private
 
