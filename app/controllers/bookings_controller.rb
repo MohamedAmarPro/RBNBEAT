@@ -14,6 +14,8 @@ class BookingsController < ApplicationController
     set_instrument
     @booking = Booking.new(booking_params)
     @booking.instrument = @instrument
+    @booking.user = current_user
+    @booking.status = "Pending"
     if @booking.save
       redirect_to bookings_path
     else
@@ -32,7 +34,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    require.params(:bookings).permit(:rent_start_date, :rent_end_date, :status)
+    params.require(:booking).permit(:rent_start_date, :rent_end_date, :status)
   end
 
   def set_bookings
@@ -40,6 +42,6 @@ class BookingsController < ApplicationController
   end
 
   def set_instrument
-    @instrument = Instrument.find(params[:id])
+    @instrument = Instrument.find(params[:instrument_id])
   end
 end
