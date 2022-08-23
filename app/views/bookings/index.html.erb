@@ -3,9 +3,13 @@
 <ul>
   <% @bookings.each do |booking| %>
   <li>
-    <p><%= booking.status%></p>
+    <p><%= booking.instrument.name %></p>
     <p><%= booking.rent_start_date%></p>
     <p><%= booking.rent_end_date%></p>
+    <p><%= booking.status%></p>
   </li>
   <%end %>
 </ul>
+
+
+<%# <%= link_to "Book an instrument", new_instrument_booking_path, class: "btn btn-primary mt-3"%>
