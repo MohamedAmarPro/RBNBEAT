@@ -1,0 +1,29 @@
+.list {
+  overflow: hidden;
+  // height: 520px;
+  background-color: #478978;
+}
+
+.cards {
+  padding: 15px;
+  background-color: #FCF7F8;
+  box-shadow: 0 0 15px rgb(156, 152, 152);
+  display: flex;
+  margin: 25px;
+}
+
+.link a {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 5px;
+  text-decoration: none;
+  background-color: #040303;
+  color: #FCF7F8;
+  padding: 15px;
+}
+
+.cards i {
+  margin: 50%;
+  padding-top: 5px;
+  color: red;
+}
