@@ -6,6 +6,10 @@
 <p> <%= @instrument.category %></p>
 <p> <%= @instrument.age %></p>
 <p> <%= @instrument.price %></p>
+<%= link_to "Reservation", new_instrument_booking_path(@instrument) %>
+ <% @instrument.photos.each do |photo| %>
+  <%= cl_image_tag photo.key %>
+ <% end %>
 <%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Est-tu putain de sur ?!"} do %>
   <i class="fa-solid fa-trash-can "></i>
 <% end %>
