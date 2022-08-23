@@ -1,0 +1,11 @@
+<h1>All bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+  <li>
+    <p><%= booking.status%></p>
+    <p><%= booking.rent_start_date%></p>
+    <p><%= booking.rent_end_date%></p>
+  </li>
+  <%end %>
+</ul>
