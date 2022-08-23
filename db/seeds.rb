@@ -30,7 +30,7 @@ file4 = URI.open('http://loremflickr.com/400/400/flute')
 instrument4 = Instrument.new(name: 'Flute', category: 'Instrument a vent en cuivre', brand: 'Cora', age: '1 months', price: '5$', user: alan)
 instrument4.photos.attach(io: file4, filename: 'flute.png', content_type: 'image/png')
 
-file5= URI.open('http://loremflickr.com/400/400/drum')
+file5 = URI.open('http://loremflickr.com/400/400/drum')
 instrument5 = Instrument.new(name: 'Drum', category: 'Instrument percussion', brand: 'Yamaha', age: '7 months', price: '5$', user: alan)
 instrument5.photos.attach(io: file5, filename: 'drum.png', content_type: 'image/png')
 

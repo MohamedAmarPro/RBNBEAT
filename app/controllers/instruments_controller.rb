@@ -21,15 +21,12 @@ class InstrumentsController < ApplicationController
     end
   end
 
-
-
   def destroy
     @instrument.destroy
   end
 
   def edit
   end
-
 
   private
 
