@@ -20,13 +20,13 @@ class InstrumentsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   private
 
   def set_instrument
     @instrument = Instrument.find(params[:id])
   end
-  
+
   def params_instruments
     params.require(:instrument).permit(:name, :category, :brand, :age, :brand, photos: [])
   end
