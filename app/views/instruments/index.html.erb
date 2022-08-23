@@ -1,9 +1,9 @@
 <div class="container">
   <h1>Every instruments</h1>
-  <div class= "list">
+  <div class= "list-index">
     <% @instruments.each do |instrument| %>
-      <div class= "cards">
-        <h2 class= "link"><%= link_to instrument.name, instrument_path(instrument) %></h2>
+      <div class= "cards-index">
+        <h2 class= "link-index"><%= link_to instrument.name, instrument_path(instrument) %></h2>
         <%= link_to instrument_path(instrument), data: {turbo_method: :delete, turbo_confirm: "Est-tu p*tain de sur ?!"} do %>
           <i class="fa-solid fa-trash-can "></i>
       </div>
