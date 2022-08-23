@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
   before_action :set_bookings, only: %I[edit update]
-
   def index
     @bookings = Booking.all
   end

@@ -1,6 +1,10 @@
 <%= simple_form_for(instrument) do |f| %>
   <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :category %>
+  <%= f.input :brand %>
+  <%= f.input :age %>
+  <%= f.input :price %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
 <%= link_to "index", instruments_path, class: "btn btn-primary mt-3"%>
