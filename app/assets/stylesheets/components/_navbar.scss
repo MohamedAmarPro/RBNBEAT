@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  font-family: 'Libre Baskerville', serif;
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +12,18 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 60px;
+}
+
+.dropdown {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.dropdown-item {
+  font-family: 'Libre Baskerville', serif;
+  font-size: large;
+  font-weight: normal;
+  font-style: normal;
+  color: #848383;
 }
