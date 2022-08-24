@@ -1,10 +1,13 @@
-<h1>Every instruments</h1>
-
-<ul>
-  <% @instruments.each do |instrument| %>
-  <li> <%= link_to instrument.name, instrument_path(instrument) %></li>
-  <%= link_to instrument_path(instrument), data: {turbo_method: :delete, turbo_confirm: "Est-tu putain de sur ?!"} do %>
-  <i class="fa-solid fa-trash-can "></i>
-  <% end %>
-  <% end %>
-</ul>
+<div class="container">
+  <h1>Every instruments</h1>
+  <div class= "list-index">
+    <% @instruments.each do |instrument| %>
+      <div class= "cards-index">
+        <h2 class= "link-index"><%= link_to instrument.name, instrument_path(instrument) %></h2>
+        <%= link_to instrument_path(instrument), data: {turbo_method: :delete, turbo_confirm: "Est-tu p*tain de sur ?!"} do %>
+          <i class="fa-solid fa-trash-can "></i>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
