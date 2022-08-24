@@ -1,18 +1,28 @@
-<h1>
-  <%= @instrument.name %>
-</h1>
-
-<p> <%= @instrument.brand %></p>
-<p> <%= @instrument.category %></p>
-<p> <%= @instrument.age %></p>
-<p> <%= @instrument.price %></p>
-<%= link_to "Reservation", new_instrument_booking_path(@instrument) %>
- <% @instrument.photos.each do |photo| %>
-  <%= cl_image_tag photo.key %>
- <% end %>
-<%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Es-tu vraiment sûr ?!"} do %>
-  <i class="fa-solid fa-trash-can "></i>
-<% end %>
-<%= link_to edit_instrument_path(@instrument) do %>
-  <i class="fa-solid fa-pen-to-square"></i>
-<% end %>
+<div class="container">
+  <div class="card-trip">
+    <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
+    <%= link_to "Reservation", new_instrument_booking_path(@instrument) %>
+    <% @instrument.photos.each do |photo| %>
+      <%= cl_image_tag photo.key %>
+    <% end %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @instrument.name %></h2>
+          <p> <%= @instrument.brand %></p>
+          <p> <%= @instrument.category %></p>
+          <p>Bought <%= @instrument.age %> years ago</p>
+          <p> </p>
+      </div>
+      <h2 class="card-trip-pricing">
+        <%= @instrument.price %> €
+      </h2>
+      <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
+      <%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Es-tu vraiment sûr ?!"} do %>
+        <i class="fa-solid fa-trash-can "></i>
+      <% end %>
+      <%= link_to edit_instrument_path(@instrument) do %>
+        <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

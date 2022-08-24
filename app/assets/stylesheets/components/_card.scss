@@ -39,8 +39,25 @@
   margin-left: 35px;
 }
 
-.cards-index i {
-  color: purple;
+.cards-index a:hover {
+  color: grey;
+}
+
+
+.share {
+  margin-bottom: 30px;
+}
+
+.share a {
+  font-size: 28px;
+  font-style: italic;
+  text-decoration: none;
+  color: black;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.share a:hover {
+  color: grey;
 }
 
 .card-category {
@@ -66,7 +83,7 @@
     color: white;
     text-decoration: none;
   }
-  
+
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -102,16 +119,16 @@
       width: 300px;
       height: 300px;
     }
-    
+
     .card-img {
       width: 250px;
       height: 150px;
     }
-    
+
     #card-img-share {
       height: 150px;
     }
-    
+
     .card-text h2 {
         font-size: 16px;
     }
