@@ -1,6 +1,6 @@
 class InstrumentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_instrument, only: [:show, :destroy, :edit]
+  before_action :set_instrument, only: [:show, :destroy, :edit, :update]
 
   def index
     @instruments = Instrument.all
@@ -25,9 +25,15 @@ class InstrumentsController < ApplicationController
 
   def destroy
     @instrument.destroy
+    redirect_to instruments_path
   end
 
   def edit
+  end
+
+  def update
+    @instrument.update(params_instruments)
+    redirect_to instruments_path
   end
 
   private
