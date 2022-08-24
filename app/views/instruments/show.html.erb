@@ -10,7 +10,7 @@
  <% @instrument.photos.each do |photo| %>
   <%= cl_image_tag photo.key %>
  <% end %>
-<%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Est-tu putain de sur ?!"} do %>
+<%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Est-tu sur ?!"} do %>
   <i class="fa-solid fa-trash-can "></i>
 <% end %>
 <%= link_to edit_instrument_path(@instrument) do %>
