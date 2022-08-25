@@ -7,6 +7,7 @@ class InstrumentsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -17,7 +18,7 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.new(params_instruments)
     @instrument.user = current_user
     if @instrument.save
-      redirect_to instruments_path(@instrument)
+      redirect_to instrument_path(@instrument)
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +26,7 @@ class InstrumentsController < ApplicationController
 
   def destroy
     @instrument.destroy
-    redirect_to instruments_path
+    redirect_to instruments_path, status: :see_other 
   end
 
   def edit
