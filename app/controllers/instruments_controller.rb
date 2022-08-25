@@ -5,8 +5,8 @@ class InstrumentsController < ApplicationController
   def index
 
     @pagy, @instruments = pagy(Instrument.all, items: 3)
-    
-    @markers = Instrument.all.geocoded.map do |instrument|
+
+    @markers = @instruments.geocoded.map do |instrument|
       {
         lat: instrument.latitude,
         lng: instrument.longitude,
