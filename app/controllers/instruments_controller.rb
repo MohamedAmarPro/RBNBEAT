@@ -1,9 +1,10 @@
 class InstrumentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_instrument, only: [:show, :destroy, :edit, :update]
+  skip_before_action :authenticate_user!, only: %I[index show]
+  before_action :set_instrument, only: %I[show destroy edit update]
 
   def index
-    @instruments = Instrument.all
+    # @instruments = Instrument.all
+    @pagy, @instruments = pagy(Instrument.all, items: 3)
   end
 
   def show
