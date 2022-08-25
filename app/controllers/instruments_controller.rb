@@ -4,9 +4,18 @@ class InstrumentsController < ApplicationController
 
   def index
     @instruments = Instrument.all
+    @markers = @instruments.geocoded.map do |instrument|
+      {
+        lat: instrument.latitude,
+        lng: instrument.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {instrument: instrument}),
+        image_url: helpers.asset_url("note.jpeg")
+      }
+    end
   end
 
   def show
+    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note.jpeg")}]
   end
 
   def new

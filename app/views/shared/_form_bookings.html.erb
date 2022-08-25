@@ -1,15 +1,18 @@
+
 <%= simple_form_for [@instrument, @booking], html: {data: {controller: "flatpickr"}} do |f| %>
-  <%= f.input :rent_start_date, as: :string,input_html: {
+  <%= f.input :rent_start_date,label: false, as: :string,input_html: {
+                                  class:"d-none",
                               data: {
                                 flatpickr_target: "rentStartDate",
                               } }
                               %>
-  <%= f.input :rent_end_date, as: :string,
+  <%= f.input :rent_end_date, as: :string,label: false,
                               input_html: {
+                                class: "d-none",
                                 data: {
                                   flatpickr_target: 'rentEndDate',
                                 } } %>
 
-  <%= f.submit class: "btn btn-primary" %>
+  <%= f.submit class: "btn btn-primary w-100" %>
 <% end %>
 <%= link_to "index", bookings_path, class: "btn btn-primary mt-3"%>
