@@ -1,0 +1,14 @@
+#pager {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+#pager a {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 5%;
+}
