@@ -17,7 +17,7 @@
         <%= @instrument.price %> €
       </h2>
       <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
-      <%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Es-tu vraiment sûr ?!"} do %>
+      <%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Es-tu vraiment certain ?!"} do %>
         <i class="fa-solid fa-trash-can "></i>
       <% end %>
       <%= link_to edit_instrument_path(@instrument) do %>

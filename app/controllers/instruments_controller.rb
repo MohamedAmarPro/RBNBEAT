@@ -1,10 +1,12 @@
 class InstrumentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_instrument, only: [:show, :destroy, :edit, :update]
+  skip_before_action :authenticate_user!, only: %I[index show]
+  before_action :set_instrument, only: %I[show destroy edit update]
 
   def index
-    @instruments = Instrument.all
-    @markers = @instruments.geocoded.map do |instrument|
+
+    @pagy, @instruments = pagy(Instrument.all, items: 3)
+    
+    @markers = Instrument.all.geocoded.map do |instrument|
       {
         lat: instrument.latitude,
         lng: instrument.longitude,
@@ -12,6 +14,7 @@ class InstrumentsController < ApplicationController
         image_url: helpers.asset_url("note.jpeg")
       }
     end
+
   end
 
   def show
