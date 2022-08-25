@@ -1,18 +1,33 @@
-<h1>
-  <%= @instrument.name %>
-</h1>
-
-<p> <%= @instrument.brand %></p>
-<p> <%= @instrument.category %></p>
-<p> <%= @instrument.age %></p>
-<p> <%= @instrument.price %></p>
-<%= link_to "Reservation", new_instrument_booking_path(@instrument) %>
- <% @instrument.photos.each do |photo| %>
-  <%= cl_image_tag photo.key %>
- <% end %>
-<%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Es-tu vraiment sûr ?!"} do %>
-  <i class="fa-solid fa-trash-can "></i>
-<% end %>
-<%= link_to edit_instrument_path(@instrument) do %>
-  <i class="fa-solid fa-pen-to-square"></i>
-<% end %>
+<div class="container">
+  <div class="show-container d-flex justify-content-around align-items-center mt-3">
+    <div class="caroussel">
+      <%= cl_image_tag @instrument.photos[0].key%>
+    </div>
+    <div class="show-container-infos">
+      <p><%= @instrument.name %></p>
+      <p>Brand: <%= @instrument.brand %></p>
+      <p>Category: <%= @instrument.category %></p>
+      <p>Used since: <%= @instrument.age %> years</p>
+      <p>Price: <%= @instrument.price %>$/day</p>
+      <p>Owner: <%= cl_image_tag @instrument.user.photo.key %><%= @instrument.user.pseudo%></p>
+    </div>
+  </div>
+  <div class="show-container-map-reservation d-flex justify-content-between mt-5">
+    <div class="show-map">
+      map
+    </div>
+    <div class="show-reservation-card">
+      <% if user_signed_in? && current_user.email === @instrument.user.email %>
+        <div class="show-edit-delete">
+          <%= link_to "Edit", edit_instrument_path %>
+          <button>delete</button>
+        </div>
+      <% else %>
+        <div class="show-reservation d-flex flex-column">
+          calendar
+          <button>reserve</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
