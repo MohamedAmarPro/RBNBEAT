@@ -9,8 +9,8 @@
         <% end %>
       </div>
       <div class="col-sm-9 col-md-9 col-lg-10 col-xl-10 col-xxl-11">
-        <h2><%= link_to instrument.name, instrument_path(instrument) %></h2>
-        <p><%= link_to instrument.brand, instrument_path(instrument) %></p>
+        <h2><%= link_to instrument.name, instrument_path(instrument), data:{turbo: false}%></h2>
+        <p><%= link_to instrument.brand, instrument_path(instrument), data:{turbo: false} %></p>
       </div>
     </div>
   </div>
