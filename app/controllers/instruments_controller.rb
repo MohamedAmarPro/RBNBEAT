@@ -3,11 +3,22 @@ class InstrumentsController < ApplicationController
   before_action :set_instrument, only: %I[show destroy edit update]
 
   def index
-    # @instruments = Instrument.all
+
     @pagy, @instruments = pagy(Instrument.all, items: 3)
+    
+    @markers = Instrument.all.geocoded.map do |instrument|
+      {
+        lat: instrument.latitude,
+        lng: instrument.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {instrument: instrument}),
+        image_url: helpers.asset_url("note.jpeg")
+      }
+    end
+
   end
 
   def show
+    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note.jpeg")}]
   end
 
   def new

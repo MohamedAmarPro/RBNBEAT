@@ -6,11 +6,12 @@ export default class extends Controller {
   static targets = ["rentStartDate", "rentEndDate"]
 
   connect() {
-    console.log(this.rentStartDateTarget);
+
     flatpickr(this.rentStartDateTarget, {
       mode: 'range',
       minDate: "today",
       dateFormat: "Y-m-d",
+      inline: true,
       "plugins": [new rangePlugin({ input: this.rentEndDateTarget})]
     })
   }
