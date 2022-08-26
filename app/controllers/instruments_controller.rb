@@ -1,12 +1,24 @@
 class InstrumentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_instrument, only: [:show, :destroy, :edit, :update]
+  skip_before_action :authenticate_user!, only: %I[index show]
+  before_action :set_instrument, only: %I[show destroy edit update]
 
   def index
-    @instruments = Instrument.all
+
+    @pagy, @instruments = pagy(Instrument.all, items: 3)
+
+    @markers = @instruments.geocoded.map do |instrument|
+      {
+        lat: instrument.latitude,
+        lng: instrument.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {instrument: instrument}),
+        image_url: helpers.asset_url("note.jpeg")
+      }
+    end
+
   end
 
   def show
+    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note.jpeg")}]
     @booking = Booking.new
   end
 

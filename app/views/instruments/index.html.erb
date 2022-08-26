@@ -1,19 +1,19 @@
 <div class="container">
-  <h1>Every instruments</h1>
-  <%= link_to "share instruments",new_instrument_path %>
+  <h1>All instruments</h1>
+  <div class = "share">
+    <%= link_to "Share your instrument",new_instrument_path %>
+  </div>
   <div class= "list-index">
-    <% @instruments.each do |instrument| %>
-      <div class="row">
-        <div class= "cards-index">
-          <div class="col-sm-4 col-lg-1">
-            <%= cl_image_tag instrument.photos[0].key %>
-          </div>
-          <div class="col-sm-8 col-lg-11">
-            <h2><%= link_to instrument.name, instrument_path(instrument) %></h2>
-            <p><%= link_to instrument.brand, instrument_path(instrument) %></p>
-          </div>
-        </div>
-      </div>
+    <%= turbo_frame_tag "instruments" do %>
+      <%= render @instruments %>
     <% end %>
   </div>
+
+    <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+  <%= render "pager", pagy: @pagy %>
 </div>

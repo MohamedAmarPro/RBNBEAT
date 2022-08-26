@@ -1,8 +1,7 @@
-<div class="container">
-<div class="row">
-<div class="col">
-<h3>Book your <%= @instrument.name %></h3>
-<%= render "shared/form_bookings", booking: @booking, instrument: @instrument %>
-</div>
-</div>
+<div class="">
+
+        <h3>Book your <%= @instrument.name %></h3>
+        <%= render "shared/form_bookings", booking: @booking, instrument: @instrument %>
+        <h3><%= @instrument.price %> €/jour</h3>
+
 </div>
