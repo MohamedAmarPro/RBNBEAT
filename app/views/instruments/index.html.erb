@@ -1,7 +1,13 @@
 <div class="container">
-  <h1>All instruments</h1>
-  <div class = "share">
-    <%= link_to "Share your instrument",new_instrument_path %>
+  <div class="row">
+    <div class= "col-lg-6">
+      <h1>All instruments</h1>
+    </div>
+    <div class= "share">
+      <div class= "col-lg-6">
+        <%= link_to "Share your instrument",new_instrument_path %>
+      </div>
+    </div>
   </div>
   <div class= "list-index">
     <%= turbo_frame_tag "instruments" do %>
