@@ -1,4 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
   <div class="carousel-indicators">
     <% @instrument.photos.each_with_index do |photo, index| %>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>" aria-current="true" aria-label="Slide <%= index %>" ></button>
