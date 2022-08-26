@@ -1,14 +1,26 @@
-<h1>All bookings</h1>
-
-<ul>
-  <% @bookings.each do |booking| %>
-  <li>
-    <p><%= booking.instrument.name %></p>
-    <p><%= booking.rent_start_date%></p>
-    <p><%= booking.rent_end_date%></p>
-    <p><%= booking.status%></p>
-  </li>
-  <%end %>
-</ul>
-
 <%# <%= link_to "Book an instrument", new_instrument_booking_path, class: "btn btn-primary mt-3"%>
+
+<div class="container">
+  <h1>Your bookings</h1>
+  <div class="list-index">
+      <% @bookings.each do |booking| %>
+        <div class="row">
+          <div class= "cards-index">
+            <div class="col-sm-3 col-md-3 col-lg-2 col-xl-2">
+              <% if booking.instrument.photos.attached? %>
+                <%= cl_image_tag booking.instrument.photos[0].key %>
+              <% else %>
+                <img src="https://image.shutterstock.com/image-vector/no-ban-stop-signs-music-260nw-271087253.jpg">
+              <% end %>
+            </div>
+            <div class="col-sm-9 col-md-9 col-lg-10 col-xl-101">
+              <h2><%= booking.instrument.name%></h2>
+              <p>Booked from: <strong><%= booking.rent_start_date %></strong></p>
+              <p>To: <strong><%= booking.rent_end_date%></strong></p>
+              <p>Booking: <strong><%= booking.status%></strong></p>
+            </div>
+          </div>
+        </div>
+      <%end %>
+  </div>
+</div>
