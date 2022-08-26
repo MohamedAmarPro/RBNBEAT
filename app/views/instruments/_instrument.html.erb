@@ -1,14 +1,14 @@
 
   <div class="row">
     <div class= "cards-index">
-      <div class="col-sm-3 col-md-3 col-lg-2 col-xl-2 col-xxl-1">
+      <div >
         <% if instrument.photos.attached? %>
           <%= cl_image_tag instrument.photos[0].key %>
         <% else %>
           <img src="https://image.shutterstock.com/image-vector/no-ban-stop-signs-music-260nw-271087253.jpg">
         <% end %>
       </div>
-      <div class="col-sm-9 col-md-9 col-lg-10 col-xl-10 col-xxl-11">
+      <div >
         <h2><%= link_to instrument.name, instrument_path(instrument), data:{turbo: false}%></h2>
         <p><%= link_to instrument.brand, instrument_path(instrument), data:{turbo: false} %></p>
       </div>

@@ -1,7 +1,7 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon mb-3">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/music-logo-design-template-f9875d0b4e2728d9312ccb51deb0b841_screen.jpg?ts=1576945774" alt="">
+      <%= image_tag "tete" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,6 +16,9 @@
           </li>
           <li class="nav-item">
             <%= link_to "Bookings", bookings_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Share your instrument", new_instrument_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
