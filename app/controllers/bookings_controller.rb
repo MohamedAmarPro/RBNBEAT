@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.instrument = @instrument
     @booking.user = current_user
-    @booking.status = "Pending"
+    @booking.status = "pending"
     if @booking.save
       redirect_to bookings_path
     else

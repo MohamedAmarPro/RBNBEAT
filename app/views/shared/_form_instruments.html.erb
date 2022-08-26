@@ -1,8 +1,11 @@
 <%= simple_form_for(instrument) do |f| %>
   <%= f.input :name %>
-  <%= f.input :category %>
+  <%= f.input :category, collection: ['String', 'Brass', 'Woodwind', 'Percussion', 'Keyboard', 'Fart']%>
   <%= f.input :brand %>
   <%= f.input :age %>
+  <%= f.input :address,
+    input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
   <%= f.input :price %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit class: "btn btn-primary" %>

@@ -39,12 +39,27 @@
   margin-left: 35px;
 }
 
+.cards-index h2 {
+  font-size: 24px;
+  color: black;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.cards-index p {
+  font-size: 18px;
+  color: black;
+  font-family: 'Libre Baskerville', serif;
+  margin-bottom: -5px;
+}
+
 .cards-index a:hover {
   color: grey;
 }
 
 
 .share {
+  display: flex;
+  align-items: center;
   margin-bottom: 30px;
 }
 

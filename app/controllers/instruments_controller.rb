@@ -19,6 +19,9 @@ class InstrumentsController < ApplicationController
 
   def show
     @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note")}]
+
+    @booking = Booking.new
+
   end
 
   def new
@@ -28,8 +31,9 @@ class InstrumentsController < ApplicationController
   def create
     @instrument = Instrument.new(params_instruments)
     @instrument.user = current_user
+
     if @instrument.save
-      redirect_to instruments_path(@instrument)
+      redirect_to instrument_path(@instrument)
     else
       render :new, status: :unprocessable_entity
     end
@@ -37,7 +41,7 @@ class InstrumentsController < ApplicationController
 
   def destroy
     @instrument.destroy
-    redirect_to instruments_path
+    redirect_to instruments_path, status: :see_other 
   end
 
   def edit
@@ -55,6 +59,6 @@ class InstrumentsController < ApplicationController
   end
 
   def params_instruments
-    params.require(:instrument).permit(:name, :category, :brand, :age, :price, photos: [])
+    params.require(:instrument).permit(:name, :category, :brand, :age, :price, :address, photos: [])
   end
 end
