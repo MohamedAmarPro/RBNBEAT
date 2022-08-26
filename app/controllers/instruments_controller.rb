@@ -11,15 +11,17 @@ class InstrumentsController < ApplicationController
         lat: instrument.latitude,
         lng: instrument.longitude,
         info_window: render_to_string(partial: "info_window", locals: {instrument: instrument}),
-        image_url: helpers.asset_url("note.jpeg")
+        image_url: helpers.asset_url("note")
       }
     end
 
   end
 
   def show
-    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note.jpeg")}]
+    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note")}]
+
     @booking = Booking.new
+
   end
 
   def new
@@ -29,6 +31,7 @@ class InstrumentsController < ApplicationController
   def create
     @instrument = Instrument.new(params_instruments)
     @instrument.user = current_user
+
     if @instrument.save
       redirect_to instrument_path(@instrument)
     else
@@ -56,6 +59,6 @@ class InstrumentsController < ApplicationController
   end
 
   def params_instruments
-    params.require(:instrument).permit(:name, :category, :brand, :age, :price, photos: [])
+    params.require(:instrument).permit(:name, :category, :brand, :age, :price, :address, photos: [])
   end
 end
