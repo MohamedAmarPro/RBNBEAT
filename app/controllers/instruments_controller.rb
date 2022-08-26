@@ -3,22 +3,28 @@ class InstrumentsController < ApplicationController
   before_action :set_instrument, only: %I[show destroy edit update]
 
   def index
+    if params[:query].present?
+      @instruments = Instrument.search_by_name(params[:query])
+    else
+      @instruments = Instrument.all
+    end
 
-    @pagy, @instruments = pagy(Instrument.all, items: 3)
+    @pagy, @instruments = pagy(@instruments, items: 4)
 
     @markers = @instruments.geocoded.map do |instrument|
       {
         lat: instrument.latitude,
         lng: instrument.longitude,
+
         info_window: render_to_string(partial: "info_window", locals: {instrument: instrument}),
-        image_url: helpers.asset_url("note")
+        image_url: helpers.asset_url("note.jpg")
       }
     end
 
   end
 
   def show
-    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note")}]
+    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note.jpg")}]
 
     @booking = Booking.new
 
@@ -41,7 +47,7 @@ class InstrumentsController < ApplicationController
 
   def destroy
     @instrument.destroy
-    redirect_to instruments_path, status: :see_other 
+    redirect_to instruments_path, status: :see_other
   end
 
   def edit
