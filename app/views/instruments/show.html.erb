@@ -1,33 +1,39 @@
 <div class="container">
-  <div class="card-trip">
-    <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
-    <%= link_to "Reservation", new_instrument_booking_path(@instrument) %>
-    <% @instrument.photos.each do |photo| %>
-      <%= cl_image_tag photo.key %>
-    <% end %>
-    <div class="card-trip-infos">
-      <div>
-        <h2><%= @instrument.name %></h2>
-          <p> <%= @instrument.brand %></p>
-          <p> <%= @instrument.category %></p>
-          <p>Bought <%= @instrument.age %> years ago</p>
-          <p> </p>
-      </div>
-      <h2 class="card-trip-pricing">
-        <%= @instrument.price %> €
-      </h2>
-      <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
-      <%= link_to instrument_path(@instrument), data: {turbo_method: :delete, turbo_confirm: "Es-tu vraiment certain ?!"} do %>
-        <i class="fa-solid fa-trash-can "></i>
-      <% end %>
-      <%= link_to edit_instrument_path(@instrument) do %>
-        <i class="fa-solid fa-pen-to-square"></i>
+  <div class="show-container d-flex justify-content-between align-items-center mt-3">
+    <div class="carousel-show">
+      <%= render 'shared/carousel' %>
+    </div>
+    <div class="show-container-infos">
+      <p><%= @instrument.name %></p>
+      <p>Brand: <%= @instrument.brand %></p>
+      <p>Category: <%= @instrument.category %></p>
+      <p>Used since: <%= @instrument.age %> years</p>
+      <p>Price: <%= @instrument.price %>$/day</p>
+      <p>Owner: <% if @instrument.user.photo.attached? %>
+        <%= cl_image_tag @instrument.user.photo.key, class: 'show-container-infos-img' %><%= @instrument.user.pseudo%>
+        <% else %>
+        <%= image_tag 'icon-user.png', class: 'show-container-infos-img' %><%= @instrument.user.pseudo%>
+        <% end %></p>
+    </div>
+  </div>
+  <div class="show-container-map-reservation d-flex justify-content-between mt-4">
+    <div class="show-map" style="width: 70%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <div class="show-reservation-card">
+      <% if user_signed_in? && current_user.email === @instrument.user.email %>
+        <div class="show-edit-delete">
+          <%= link_to "Edit", edit_instrument_path, class: 'btn btn-dark'%>
+          <%= link_to "Delete", instrument_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure ?'}, class: 'btn btn-dark'%>
+        </div>
+      <% else %>
+        <div class="show-reservation d-flex flex-column">
+          <%= render 'shared/form_bookings' %>
+        </div>
       <% end %>
     </div>
   </div>
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+
 </div>
