@@ -48,8 +48,10 @@ file5 = URI.open('http://loremflickr.com/400/400/drum')
 instrument5 = Instrument.new(name: 'Drum', category: 'Instrument percussion', brand: 'Yamaha', age: '7 months', price: '5$', address: "24 route de Valenciennes, Orsinval", user: momo)
 instrument5.photos.attach(io: file5, filename: 'drum.png', content_type: 'image/png')
 
+
+
 puts '-------------------- INSTRUMENTS CREATE ---------------------------------------------'
-puts '-------------------- SAVE INSTRUMENTS -----------------------------------------------'
+
 
 instrument.save!
 instrument2.save!
@@ -57,4 +59,4 @@ instrument3.save!
 instrument4.save!
 instrument5.save!
 
-puts '-------------------- INSTRUMENTS SAVE -----------------------------------------------'
+puts '-------------------- SAVE INSTRUMENTS -----------------------------------------------'

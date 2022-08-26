@@ -1,0 +1,9 @@
+<%= form_with url: instruments_path, method: :get, class: "d-flex mb-4 mt-4" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    style:"margin-right:10px",
+    placeholder: "Find Your Instrument "
+  %>
+  <%= submit_tag "Search", class: "btn btn-dark" %>
+<% end %>

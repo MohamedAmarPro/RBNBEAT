@@ -3,13 +3,19 @@ class InstrumentsController < ApplicationController
   before_action :set_instrument, only: %I[show destroy edit update]
 
   def index
+    if params[:query].present?
+      @instrument = Instrument.search_by_name(params[:query])
+    else
+      @instrument = Instrument.all
+    end
 
-    @pagy, @instruments = pagy(Instrument.all, items: 3)
+    @pagy, @instruments = pagy(@instrument, items: 25)
 
     @markers = @instruments.geocoded.map do |instrument|
       {
         lat: instrument.latitude,
         lng: instrument.longitude,
+
         info_window: render_to_string(partial: "info_window", locals: {instrument: instrument}),
         image_url: helpers.asset_url("note.jpg")
       }
