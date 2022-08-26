@@ -4,12 +4,12 @@ class InstrumentsController < ApplicationController
 
   def index
     if params[:query].present?
-      @instrument = Instrument.search_by_name(params[:query])
+      @instruments = Instrument.search_by_name(params[:query])
     else
-      @instrument = Instrument.all
+      @instruments = Instrument.all
     end
 
-    @pagy, @instruments = pagy(@instrument, items: 25)
+    @pagy, @instruments = pagy(@instruments, items: 4)
 
     @markers = @instruments.geocoded.map do |instrument|
       {

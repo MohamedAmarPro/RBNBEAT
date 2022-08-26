@@ -5,19 +5,10 @@
     <div class= "list-index col-7">
       <%= turbo_frame_tag "instruments" do %>
 
-  <div class="row">
-    <div class= "col-lg-6">
-      <h1>All instruments</h1>
-    </div>
-    <div class= "share">
-      <div class= "col-lg-6">
-        <%= link_to "Share your instrument",new_instrument_path %>
-      </div>
-    </div>
-  </div>
- 
+
       <%= render @instruments %>
       <% end %>
+ 
     </div>
       <div style="height: 100vh;" class="map_index col-5"
       data-controller="map"
@@ -31,6 +22,7 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
   </div>
-
-  <%= render "pager", pagy: @pagy %>
+</div>
+<div class="row">
+<%= render "pager", pagy: @pagy %>
 </div>
