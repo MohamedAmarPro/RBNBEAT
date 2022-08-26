@@ -11,14 +11,14 @@ class InstrumentsController < ApplicationController
         lat: instrument.latitude,
         lng: instrument.longitude,
         info_window: render_to_string(partial: "info_window", locals: {instrument: instrument}),
-        image_url: helpers.asset_url("note")
+        image_url: helpers.asset_url("note.jpg")
       }
     end
 
   end
 
   def show
-    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note")}]
+    @markers = [{lat: @instrument.latitude, lng: @instrument.longitude, image_url: helpers.asset_url("note.jpg")}]
 
     @booking = Booking.new
 
@@ -41,7 +41,7 @@ class InstrumentsController < ApplicationController
 
   def destroy
     @instrument.destroy
-    redirect_to instruments_path, status: :see_other 
+    redirect_to instruments_path, status: :see_other
   end
 
   def edit
