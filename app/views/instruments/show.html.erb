@@ -28,10 +28,13 @@
           <%= link_to "Edit", edit_instrument_path, class: 'btn btn-dark'%>
           <%= link_to "Delete", instrument_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure ?'}, class: 'btn btn-dark'%>
         </div>
-      <% else %>
+      <% elsif user_signed_in? %>
         <div class="show-reservation d-flex flex-column">
           <%= render 'shared/form_bookings' %>
         </div>
+      <% else %>
+        <p class="mt-3"><%='You need to be log to book this instrument' %></p>
+        <%= link_to "Login", user_session_path, class: 'btn btn-dark d-flex justify-content-center' %>
       <% end %>
     </div>
   </div>

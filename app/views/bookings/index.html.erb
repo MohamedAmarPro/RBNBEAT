@@ -4,6 +4,7 @@
   <h1>Your bookings</h1>
   <div class="list-index">
       <% @bookings.each do |booking| %>
+      <% if user_signed_in? && current_user.id === booking.user_id %>
         <div class="row">
           <div class= "cards-index">
             <div class="col-sm-3 col-md-3 col-lg-2 col-xl-2">
@@ -17,10 +18,38 @@
               <h2><%= booking.instrument.name%></h2>
               <p>Booked from: <strong><%= booking.rent_start_date %></strong></p>
               <p>To: <strong><%= booking.rent_end_date%></strong></p>
-              <p>Booking: <strong><%= booking.status%></strong></p>
+              <p>Status: <strong><%= booking.status%></strong></p>
+              <p>Owner: <strong><%= booking.instrument.user.pseudo %></strong></p>
+              <p>Adress: <strong><%= booking.instrument.adress %></strong></p>
             </div>
           </div>
         </div>
+        <% end %>
+      <%end %>
+  </div>
+  <h2 class="mt-3 mb-3" >My bookings</h2>
+  <div class="list-index">
+      <% @bookings.each do |booking| %>
+      <% if user_signed_in? && current_user.id === booking.instrument.user_id %>
+        <div class="row">
+          <div class= "cards-index">
+            <div class="col-sm-3 col-md-3 col-lg-2 col-xl-2">
+              <% if booking.instrument.photos.attached? %>
+                <%= cl_image_tag booking.instrument.photos[0].key %>
+              <% else %>
+                <img src="https://image.shutterstock.com/image-vector/no-ban-stop-signs-music-260nw-271087253.jpg">
+              <% end %>
+            </div>
+            <div class="col-sm-9 col-md-9 col-lg-10 col-xl-101">
+              <h2><%= booking.instrument.name%></h2>
+              <p>Booked from: <strong><%= booking.rent_start_date %></strong></p>
+              <p>To: <strong><%= booking.rent_end_date%></strong></p>
+              <p>Status: <strong><%= booking.status%></strong></p>
+              <p>From: <strong><%= booking.user.pseudo %></strong>
+            </div>
+          </div>
+        </div>
+        <% end %>
       <%end %>
   </div>
 </div>
