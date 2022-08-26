@@ -1,0 +1,36 @@
+.show-container {
+    background-color: #fcfcfc;
+    font-size: 18px;
+    height: 600px;
+    position: relative;
+}
+
+.show-container-infos {
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 0 10px #e4e4e4;
+    position: absolute;
+    right: 200px;
+}
+
+.show-container-infos-img {
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.show-container-map-reservation {
+    background-color: #fcfcfc;
+}
+
+.show-edit-delete {
+    width: 250px;
+}
+
+.show-edit-delete a {
+    width: 100px;
+}
+
+.show-reservation-card {
+    margin-right: 12px
+}

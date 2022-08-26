@@ -1,0 +1,11 @@
+.carousel-inner{
+    height: 550px;
+    width: 650px;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
+    width: 100%;
+    text-align: center;
+}
